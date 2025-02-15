@@ -1,0 +1,97 @@
+BASICS
+- HTML documents should start with <!DOCTYPE HTML>
+- tags are ways to mark text, there should be an opening and closing tags
+- <h1> through <h6> are header tags, with h6 being the smallest and h1 the largest
+- <p> tag is for paragraphs
+- lorem ipsum can be typed for filler text
+- <br> is the tag for a line break, it doesn't need a line break
+- <hr> adds a horizontal line to section off text in rows
+- <!-- --> is used to add comments (comment goes where space is)
+
+LINKING
+- <a href="link"> </a> is used to insert links, and text for the link can be added 
+between the tags
+   - target= can be set to _self or _blank, depending on whether the link should open in
+   the same tab or a new tab
+   - title= can be used to add a description when the link is hovered over
+- linking can be done using relative file path as well
+
+IMAGES
+- <img src=> is used to insert images, and the images name in files should be entered
+   - height= and width= can be used to adjust sizing
+   - title= works the same way that it does for links for images as well
+
+AUDIO
+- <audio src=> is used to insert audio, and the name of the audio file should be entered
+   - controls can be added after "audio" in tag, and various controls can be applied to the audio
+      - autoplay: audio begins playing immediately
+      - muted: audio defaults to mute
+      - loop: audio will play over and over again
+- audio can be downloaded from YouTube Audio Library
+
+VIDEO
+- <video src=> is used to insert a video, and the name of the video file should be entered
+   - controls can be added after "video" in the tag, and various controls can be applied
+      - autoplay: video immediately begins to play
+      - muted: video defaults to mute
+      - loop: video plays over and over again
+   - height= and width= can be used to adjust sizing
+
+TEXT FORMATTING
+- <b>: bold
+- <i>: italics
+- <big>: increases size
+- <small>: decreases size
+- <sub>: subscript
+- <sup>: superscript
+- <ins>: underline
+- <del>: strike through
+- <mark>: highlights text
+
+LISTS
+- <ul>: unordered lists (bullets)
+   - each item in the list should have an <li> tag
+- <ol>: ordered lists (numbered)
+   - each item in the list should have an <li> tag
+- <dl>: description list
+   - uses <dt> for term and <dd> for definition
+      - <dd> is indented
+- for sublists, nest multiple lists within each other
+
+TABLES
+- <table> creates table
+   - <tr> is used for each column heading
+   - <td> is used for each element down the column
+- all 3 tags can have color= w/i tag
+- all 3 tags can have align= w/i tag
+- all 3 tags can have width= w/i tag
+
+COLORS
+- style= can be added w/i tags to allow CSS properties
+- color is a CSS property, and it can be set by name, RGB, or hex code
+
+SPAN & DIV
+- <span> applies lists markup to a portion of document
+- <div> adds division to a document (appearance-wise similar to span)
+
+META
+- <meta> "adds data to data"
+- goes w/i <head> tags
+- has name= and description= for search optimization
+- name=viewport, description=device-width, initial-scale=1.0 will scale website
+to the size of a mobile device
+- name=refresh, description=30 will make the site refresh every 30 sec, time can be adjusted
+
+IFRAME
+- used to imbed other source of content
+- <iframe src=> is used to link other content, link should be entered in tag
+- height= and width= can be used
+
+BUTTONS
+- <button> can be added between <a> tags
+- has onclick attribute, which can run a function in Javascript
+
+FORMS
+- <form> can be used to receive information
+- <label> goes between <form> tags and labels the field
+- <input> adds an input field, has type= attribute, which can be text or password
