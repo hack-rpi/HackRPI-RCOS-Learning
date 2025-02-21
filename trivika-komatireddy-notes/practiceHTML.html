@@ -1,0 +1,157 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>HTML Notes Written in HTML</title>
+</head>
+<body>
+
+<h1>HTML Notes</h1>
+
+<h3>BASICS</h3>
+<ul>
+   <li>HTML documents should start with &lt!DOCTYPE HTML&gt</li>
+   <li>tags are ways to mark text, there should be an opening and closing tags</li>
+   <li>&lth1&gt through &lth6&gt are header tags, with h6 being the smallest and h1 the largest</li>
+   <li>&ltp&gt tag is for paragraphs</li>
+   <li>lorem ipsum can be typed for filler text</li>
+   <li>&ltbr&gt is the tag for a line break, it doesn't need a line break</li>
+   <li>&lthr&gt adds a horizontal line to section off text in rows</li>
+   <li>&lt!-- --&gt is used to add comments (comment goes where space is)</li>
+</ul>
+
+<h3>LINKING</h3>
+<ul>
+   <li>&lta href="link"&gt </a> is used to insert links, and text for the link can be added 
+      between the tags</li>
+   <ul>
+      <li>target= can be set to _self or _blank, depending on whether the link should open in
+         the same tab or a new tab</li>
+      <li>title= can be used to add a description when the link is hovered over</li>
+   </ul>
+   <li>linking can be done using relative file path as well</li>
+</ul>
+
+<h3>IMAGES</h3>
+<ul>
+   <li>&ltimg src=&gt is used to insert images, and the images name in files should be entered</li>
+   <li>height= and width= can be used to adjust sizing</li>
+   <li>title= works the same way that it does for links for images as well</li>
+</ul>
+
+<h3>AUDIO</h3>
+<ul>
+   <li>&ltaudio src=&gt is used to insert audio, and the name of the audio file should be entered</li>
+   <ul>
+      <li>controls can be added after "audio" in tag, and various controls can be applied to the audio</li>
+      <ul>
+         <li>autoplay: audio begins playing immediately</li>
+         <li>muted: audio defaults to mute</li>
+         <li>audio will play over and over again</li>
+      </ul>
+   </ul>
+   <li>audio can be downloaded from YouTube Audio Library</li>
+</ul>
+
+<h3>VIDEO</h3>
+<ul>
+   <li>&ltvideo src=&gt is used to insert a video, and the name of the video file should be entered</li>
+   <ul>
+      <li>controls can be added after "video" in the tag, and various controls can be applied</li>
+      <ul>
+         <li>autoplay: video immediately begins to play</li>
+         <li>muted: video defaults to mute</li>
+         <li>loop: video plays over and over again</li>
+      </ul>
+      <li>height= and width= can be used to adjust sizing</li>
+   </ul>
+</ul>
+
+<h3>TEXT FORMATTING</h3>
+<ul>
+   <li>&ltb&gt: bold</li>
+   <li>&lti&gt: italics</li>
+   <li>&ltbig&gt: increase size</li>
+   <li>&ltsmall&gt: decreases size</li>
+   <li>&ltsub&gt: subscript</li>
+   <li>&ltsup&gt: superscript</li>
+   <li>&ltins&gt: insert</li>
+   <li>&ltdel&gt: strike through</li>
+   <li>&ltmark&gt: highlight</li>
+</ul>
+
+<h3>LISTS</h3>
+<ul>
+   <li>&ltul&gt: unordered lists (bullets)</li>
+   <ul>
+      <li>each item in the list should have an &ltli&gt tag</li>
+   </ul>
+   <li>&ltol&gt: ordered lists (numbered)</li>
+   <ul>
+      <li>each item in the list should have an &ltli&gt tag</li>
+   </ul>
+   <li>&ltdl&gt: description list</li>
+   <ul>
+      <li>uses &ltdt&gt for term and &ltdd&gt for definition</li>
+      <ul>
+         <li>&ltdd&gt is indented</li>
+      </ul>
+   </ul>
+   <li>for sublists, nest multiple lists within each other</li>
+</ul>
+
+<h3>TABLES</h3>
+<ul>
+   <li>&lttable&gt creates table</li>
+   <ul>
+      <li>&lttr&gt is used for each column heading</li>
+      <li>&lttd&gt is used for each element down the column</li>
+   </ul>
+   <li>all 3 tags can have color= w/i tag</li>
+   <li>all 3 tags can have align= w/i tag</li>
+   <li>all 3 tags can have width= w/i tag</li>
+</ul>
+
+<h3>COLORS</h3>
+<ul>
+   <li>style= can be added w/i tags to allow CSS properties</li>
+   <li>color is a CSS property, and it can be set by name, RGB, or hex code</li>
+</ul>
+
+<h3>SPAN & DIV</h3>
+<ul>
+   <li>&ltspan&gt applies lists markup to a portion of document</li>
+   <li>&ltdiv&gt adds division to a document (appearance-wise similar to span)</li>
+</ul>
+
+<h3>META</h3>
+<ul>
+   <li>&ltmeta&gt "adds data to data"</li>
+   <li>goes w/i &lthead&gt tags</li>
+   <li>has name= and description= for search optimization</li>
+   <li>name=viewport, description=device-width, initial-scale=1.0 will scale website
+      to the size of a mobile device</li>
+   <li>name=refresh, description=30 will make the site refresh every 30 sec, time can be adjusted</li>
+</ul>
+
+<h3>IFRAME</h3>
+<ul>
+   <li>used to imbed other source of content</li>
+   <li>&ltiframe src=&gt is used to link other content, link should be entered in tag</li>
+   <li>height= and width= can be used</li>
+</ul>
+
+<h3>BUTTONS</h3>
+<ul>
+   <li>&ltbutton&gt can be added between &lta&gt tags</li>
+   <li>has onclick attribute, which can run a function in Javascript</li>
+</ul>
+
+<h3>FORMS</h3>
+<ul>
+   <li>&ltform&gt can be used to receive information</li>
+   <li>&ltlabel&gt goes between &ltform&gt tags and labels the field</li>
+   <li>&ltinput&gt adds an input field, has type= attribute, which can be text or password</li>
+</ul>
+
+</body>
+</html>
