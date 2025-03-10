@@ -1,0 +1,121 @@
+BASICS
+- CSS can be applied inline, externally, and internally
+- inline attributes can be set by writing style= in a tag
+and entering different attributes, splitting them with semi-colons
+- CSS can also be used internally by creating <style> tags in an HTML
+file and listing attributes under the name of a tag, like body
+- CSS can be used externally by creating a new CSS file structured
+in the same way as internal CSS, but it must be linked in the
+HTML using <link rel="stylesheet" href="*relative link*">
+^^ considered best practice b/c the stylesheet can be reused
+
+IDS
+- used for giving a specific element a certain set of attributes
+- use #idname to assign attributes
+
+CLASS
+- used when multiple elements need the same set of attributes
+- use .classname to assign attributes
+
+BASIC ATTRIBUTES 
+- background-color
+- color
+^^ can be set using names, RGB, or hex codes
+
+FONTS
+- font-family: typically contain two or three fonts where the first 
+font is the default, unless it doesn't work, in which case the back ups are used
+- fonts.google.com can be used for open source fonts, which provides
+a link to paste into an HTML document
+other font attributes:
+   - font-style
+   - font-weight
+   - text-decoration
+   - font-size
+
+BORDERS
+- border-style: type of line
+- border-width
+- border-color
+- border-radius: rounds edges, bigger number creates smoother curves
+- padding: adds space between text and border
+- border-top-style
+- border-bottom-style
+- border-left-style
+- border-right-style
+^^ border-direction format can be used for color and width too
+
+BACKGROUND
+- background: linear-gradient(optional to direction, color1, color2)
+- background-repeat: no-repeat
+- background-attachment: fixed
+- background-image: url("relative link")
+- background-position: center;
+- background-size: cover - adjusts dynamically
+
+MARGINS
+- space around an element
+- differs from padding b/c padding is space between content and border
+- margin is space outside a border
+- margin-top
+- margin-left
+- margin-bottom
+- margin-right 
+^^ can be set to pixels or percentages for dynamic change
+based on window size
+- keyword auto can be used to keep elements centered 
+regardless of window size
+
+FLOAT
+- float property can be used to move elements to a 
+specific direction in a container which allows text to wrap
+- clear property can maintain empty space
+
+POSITION
+- position can be static, relative, absolute, and sticky
+- static is the default
+- absolute disregards flow of the document, searches for non-static parent
+and uses viewport if none are found
+- sticky allows an element to constantly remain on the screen
+with the combo of top or bottom attributes
+
+PSEUDO CLASS
+- special state
+- to use, write name:_____ where the blank can be filled with any special state
+- when the element satisfies the state, the listed attributes 
+become active
+- some pseudo classes include hover, active, link, and nth-child
+- nth-child property can be used to give sibling elements different patterns
+
+SHADOWS
+- text-shadow - takes 3 #s and a color, with the last number being the
+spread of the shadow
+- box-shadow works similarly to text-shadows
+
+ICONS
+- icons can be used from Font Awesome and act as hyperlinks
+
+TRANSFORMATIONS
+- transform attribute performs position changes in a graphical context
+- transform: translateX() will change location on X axis
+- transform: translateY() will change location on Y axis
+- transform: rotateX/Y/Z() rotates image according to given axis
+- transform: skewX/Y/Z()
+- transform: scaleX/Y()
+
+ANIMATIONS
+- use @keyframes keyword for ANIMATIONS
+- set from(margin: ___)
+- set to(margin: ___)
+^^ go w/i keyframes bracket
+- animation: *animationname*
+- animation-play-state: running;
+- animation-delay
+- animation-iteration-count
+- animation-duration
+- animation-timing-function
+- animations can be used with pseudo classes
+- animations can also be rotations, fade in and out, scale, and color changes
+- 100%{transform: rotateZ(360deg)}
+- 50%{opacity:0;}
+- 50%{transform: scale(0.5, 0.5);}
