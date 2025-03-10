@@ -1,0 +1,17 @@
+JavaScript is the programming language of the web
+
+
+What can it do?
+JavaScript can change HTML content
+- One JavaScript HTML method is getElementbyId()
+- This method "finds" an HTML content, returns an object representing the element found. 
+
+JavaScript can change HTML attribute values
+For example, JavaScript can change the src attribute of an image.
+JavaScript can change CSS
+Example: change size of an image
+JavaScript can hide HTML elements
+
+
+In HTML, JavaScript code is inserted between <script> and </script> tags
+JavaScript can be inserted in the head or body of an HTML page. It can also be placed in an external file.
