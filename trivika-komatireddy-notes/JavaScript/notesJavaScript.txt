@@ -1,0 +1,73 @@
+BASICS
+- used to add functionality to websites
+- runs in JavaScript engines or Node (C++ program that includes Google's V8 engine)
+- every browser has a JavaScript engine and code can be written in the console
+
+- need a <script> tag in HTML document at the end of the body (best practice)
+- for better organization or larger pieces of code, create a separate .js document
+- all statements in JavaScript should be ended with a semi-colon
+- comments can be added with a double slash (//)
+
+VARIABLES
+- in the past var was used for variables, now "let" keyword is used
+- reserved keywords cannot be used to name variables
+- it is best practice to use descriptive variable names
+- variable names cannot start with numbers
+- variable names cannot contain spaces or hyphens
+- camel case is standard convention
+- modern best practice is to declare each variable on a separate line
+- "const" keyword can replace let if the variable will not be changed
+
+PRIMITIVE VAR TYPES
+- string literals, number literals, and boolean literals are examples of primitive types 
+- variables can be set to undefined or null as well
+
+DYNAMIC TYPING
+- the type of a variable does not have to remain constant
+- the type of a variable is determined when the code is run based on the value that is contained
+- "typeof" can be used to find out what the type of a variable is
+- there is no distinction between different types of numbers, like floats, doubles
+and ints; the type of all numbers is simply number
+
+REFERENCE TYPES
+- objects are reference types
+- an object can have several attributes, for ex.:
+let person {
+   name: "John",
+   age: 30
+}
+
+^^ creates a "person" object
+- to access properties, you can use dot or bracket notation, for ex.:
+person.name = 'John';
+person['name'] = 'Mary;
+
+ARRAYS
+- data structure containing a list of elements
+- initialize an array using brackets, for ex.:
+let selectedColors = ['red', 'blue'];
+
+- access elements by index, for ex.:
+selectedColors[2] = 1
+
+- arrays can contain more than one data type
+
+FUNCTIONS
+- syntax: function *functionName*(*inputs*) {}
+- call the function by using its name and entering arguments in the parentheses if needed
+example:
+function greet(name, lastName) {
+   console.log('Hello ' + name + ' ' + lastName);
+}
+
+- functions can be called in console.log()
+
+ALERTS
+- .alert(*desired alert*) will create a pop up box, for ex.:
+window.alert("Hello world");
+
+ELEMENTS BY ID 
+- .getElementById allows users to work with specific elements, for ex.:
+document.getElementById("myID").textContent = "Hello";
+
+^^ sets the text of that element to "Hello"
