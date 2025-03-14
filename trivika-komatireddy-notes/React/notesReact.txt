@@ -1,0 +1,42 @@
+BASICS
+- one of the most popular front-end frameworks
+- ensures code is synced in and easy-to-read way
+- it is recommended to break down the user interface into components
+- React uses a declarative approach--you tell the code what the final product should look like
+- use npm create vite@latest to create a new project
+- run npm i and npm run dev to start up the application
+- main.jsx links index.html to React code
+
+COMPONENTS 
+- a function that returns jsx is a component and the name starts with an uppercase letter
+
+JSX
+- CSS file can be imported into .jsx file
+- elements can be returned between tags, and more code can be written between the tags
+- HTML key words like class should not be used
+- only one element can be returned--if you want to return more, wrap it in <div> tags
+or fragments  (empty tags <> <\>)
+
+STATE
+- import { useState } from "react"
+- const [name, setName] = useState("")
+- value of state cannot be changed, but calling function set____ can be used, for ex.:
+
+const [newItem, setNewItem] = useState("")
+setNewItem("whatever you want")
+
+^^ newItem value is updated, entire component is rendered again
+- onChange, onInput, and onClick are event listeners that can be used with states
+
+SHORT CIRCUITING
+- acts as an if statement, for ex.:
+
+(todos.length === 0 && "No Todos")
+
+^^ "No Todos" is only shown when the length of todos is 0
+
+BREAKING INTO COMPONENTS
+- create a new .jsx file for every component
+- export function from original document
+- paste HTML into new component and remove from original
+- pass in necessary props
