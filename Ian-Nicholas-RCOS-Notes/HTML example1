@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en-US" style="background-color:linen;">
+
+<h1 title="Secret Poem" style="font-size:40px;"> little feeling</h1>
+<body>
+  <pre>
+    <h3 style="color:red" title="The roses are white"> Roses are red </h3>
+    <h3 style="color:blueviolet" title="The violets are too"> Violets are blue </h3>
+    <h3 title="I'm feeling horrible"> I'm feeling <i>happy </i> </h3>
+    <h3 title="I think the world is too"> I hope you are too </h3>
+    <h3 title="If you're feeling happy"> If you're feeling <sub style="color:blue">sad</sub> </h3>
+    <h3 title="I hope that doesn't change"> I hope you feel anew </h3>
+    <h3 title="When I tell myself"> When I tell you </h3>
+    <h3 title="I hope happines never feels strange"> Sadness is never <del>long</del> in queue </h3>
+  </pre>
+
+  <abbr title="You definitely shouln't hover over each line to find out a secret!!1!"> YDSHOELTFOAS! title= </abbr>
+
+</body>
+
+</html>
