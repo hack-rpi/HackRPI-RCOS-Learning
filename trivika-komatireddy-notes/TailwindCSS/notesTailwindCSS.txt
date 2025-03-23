@@ -1,0 +1,27 @@
+BASICS
+- CSS framework 
+- builds on top of CSS
+- efficient 
+- easy to customize
+- faster than regular CSS
+- very similar to CSS, but some syntax differences
+- well-documented
+- utility classes are used which are easy to maintain and update
+- custom CSS does not have to be written
+- built into HTML markup
+- doesn't have built-in animation tools
+
+CUSTOMIZATION
+- theme can be customized to include particular colors and more, for ex.:
+
+colors: {
+   "twitter-blue": <hex code>
+}
+
+^^ custom names can be used inline
+
+- customization can be used for individual layers (base, components, utilities)
+- to add style to HTML elements, use the base layer
+- to add style to more complicated classes, use the components layer
+- utilities layer can be used for features that Tailwind doesn't have by default
+- @apply can be used as a shortcut for writing CSS
