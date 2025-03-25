@@ -686,3 +686,484 @@ BDO stands for Bi-Directional Override.
 The HTML <bdo> tag is used to override the current text direction:-->
 
   <bdo dir="rtl">This text will be written from right to left</bdo>
+
+  <!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  
+  HTML COLORS
+  
+  HTML colors are specified with predefined color names, or with RGB, HEX, HSL, RGBA, or HSLA values.
+
+  Background color:  -->
+  <h1 style="background-color:DodgerBlue;">Hello World</h1>
+  <p style="background-color:Tomato;">Lorem ipsum...</p>
+
+  <!--
+  Text color
+  -->
+
+  <h1 style="color:Tomato;">Hello World</h1>
+  <p style="color:DodgerBlue;">Lorem ipsum...</p>
+  <p style="color:MediumSeaGreen;">Ut wisi enim...</p>
+
+  <!--BORDER COLORS-->
+  <h1 style="border:2px solid Tomato;">Hello World</h1>
+  <h1 style="border:2px solid DodgerBlue;">Hello World</h1>
+  <h1 style="border:2px solid Violet;">Hello World</h1>
+
+  <!--Color values
+  
+  In HTML, colors can also be specified using RGB values, 
+  HEX values, HSL values, RGBA values, and HSLA values.
+
+The following three <div> elements have their background color set with 
+  RGB, HEX, and HSL values:
+
+  rgb(255, 99, 71)
+  #ff6347
+  hsl(9, 100%, 64%)
+
+  The following two <div> elements have their background color set with RGBA and HSLA values, which add an Alpha channel to the color (here we have 50% transparency):
+
+  rgba(255, 99, 71, 0.5)
+  hsla(9, 100%, 64%, 0.5) -->
+
+  <h1 style="background-color:rgb(255, 99, 71);">...</h1>
+  <h1 style="background-color:#ff6347;">...</h1>
+  <h1 style="background-color:hsl(9, 100%, 64%);">...</h1>
+
+  <h1 style="background-color:rgba(255, 99, 71, 0.5);">...</h1>
+  <h1 style="background-color:hsla(9, 100%, 64%, 0.5);">...</h1>
+
+  <!--
+  RGB AND RGBA COLORS
+  
+  An RGB color value represents RED, GREEN, and BLUE light sources.
+
+  An RGBA color value is an extension of RGB with an Alpha channel (opacity).
+
+  RGB Values
+    In HTML, a color can be specified as an RGB value, using this formula:
+    rgb(red, green, blue)
+    Each parameter (red, green, and blue) defines the intensity of the color with a value between 0 and 255.
+    This means that there are 256 x 256 x 256 = 16777216 possible colors!
+
+  RGBA values
+    RGBA color values are an extension of RGB color values with an Alpha channel - which specifies the opacity for a color.
+    An RGBA color value is specified with:
+    rgba(red, green, blue, alpha)
+    The alpha parameter is a number between 0.0 (fully transparent) and 1.0 (not transparent at all):
+
+  HEX colors
+    In HTML, a color can be specified using a hexadecimal value in the form:
+    #rrggbb
+    Where rr (red), gg (green) and bb (blue) are hexadecimal values between 00 and ff (same as decimal 0-255).
+    For example, #ff0000 is displayed as red, because red is set to its highest value (ff), and the other two (green and blue) are set to 00.
+    Another example, #00ff00 is displayed as green, because green is set to its highest value (ff), and the other two (red and blue) are set to 00.
+    To display black, set all color parameters to 00, like this: #000000.
+    To display white, set all color parameters to ff, like this: #ffffff.
+
+  HSL Colors
+    In HTML, a color can be specified using hue, saturation, and lightness (HSL) in the form:
+    hsl(hue, saturation, lightness)
+    Hue is a degree on the color wheel from 0 to 360. 0 is red, 120 is green, and 240 is blue.
+    Saturation is a percentage value. 0% means a shade of gray, and 100% is the full color.
+    Lightness is also a percentage value. 0% is black, and 100% is white.
+
+  Saturation
+    Saturation can be described as the intensity of a color.
+    100% is pure color, no shades of gray.
+    50% is 50% gray, but you can still see the color.
+    0% is completely gray; you can no longer see the color.
+
+  Lightness
+    The lightness of a color can be described as how much light 
+    you want to give the color, where 0% means no light (black), 
+    50% means 50% light (neither dark nor light), and 
+    100% means full lightness (white).
+
+  HSLA colors
+    HSLA color values are an extension of HSL color values, with an Alpha channel -
+        which specifies the opacity for a color.
+    An HSLA color value is specified with:
+    hsla(hue, saturation, lightness, alpha)
+    The alpha parameter is a number between 0.0 (fully transparent) and 1.0 (not transparent at all):
+    Experiment by mixing the HSLA values below:
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+HTML STYLES - CSS
+
+only new stuff
+
+CSS Border
+The CSS border property defines a border around an HTML element.
+
+Tip: You can define a border for nearly all HTML elements.-->
+
+p {
+  border: 2px solid powderblue;
+}
+
+<!--
+CSS padding
+The CSS padding property defines a padding (space) between the text and the border.-->
+
+p {
+  border: 2px solid powderblue;
+  padding: 30px;
+}
+
+<!--
+
+Use the HTML style attribute for inline styling
+Use the HTML <style> element to define internal CSS
+Use the HTML <link> element to refer to an external CSS file
+Use the HTML <head> element to store <style> and <link> elements
+Use the CSS color property for text colors
+Use the CSS font-family property for text fonts
+Use the CSS font-size property for text sizes
+Use the CSS border property for borders
+Use the CSS padding property for space inside the border
+Use the CSS margin property for space outside the border
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+HTML LINKS
+Hyperlinks:
+  HTML links are hyperlinks.
+  You can click on a link and jump to another document.
+  When you move the mouse over a link, the mouse arrow will turn into a little hand.
+
+
+Syntax:
+The HTML <a> tag defines a hyperlink. It has the following syntax:-->
+  
+<a href="url">link text</a>
+
+<!--
+The most important attribute of the <a> element is the href attribute, which indicates the link's destination.
+
+The link text is the part that will be visible to the reader.
+
+Clicking on the link text, will send the reader to the specified URL address.
+
+
+By default, links will appear as follows in all browsers:
+
+An unvisited link is underlined and blue
+A visited link is underlined and purple
+An active link is underlined and red
+
+
+The target Attribute
+
+By default, the linked page will be displayed in the current browser window. 
+To change this, you must specify another target for the link.
+
+The target attribute specifies where to open the linked document.
+
+The target attribute can have one of the following values:
+
+_self - Default. 
+  Opens the document in the same window/tab as it was clicked
+_blank - 
+  Opens the document in a new window or tab
+_parent -  
+  Opens the document in the parent frame
+_top - 
+  Opens the document in the full body of the window
+
+Example
+Use target="_blank" to open the linked document in a new browser window or tab:-->
+
+<a href="https://www.w3schools.com/" target="_blank">Visit W3Schools!</a>
+
+<!--
+Absolute URLs vs. Relative URLs
+
+Both examples above are using an absolute URL (a full web address) in the href attribute.
+
+A local link (a link to a page within the same website) 
+is specified with a relative URL (without the "https://www" part):
+
+EX-->
+
+<h2>Absolute URLs</h2>
+<p><a href="https://www.w3.org/">W3C</a></p>
+<p><a href="https://www.google.com/">Google</a></p>
+
+<h2>Relative URLs</h2>
+<p><a href="html_images.asp">HTML Images</a></p>
+<p><a href="/css/default.asp">CSS Tutorial</a></p>
+
+
+<!--
+HTML Links - Use an Image as a Link
+To use an image as a link, just put the <img> tag inside the <a> tag:-->
+
+<a href="default.asp">
+<img src="smiley.gif" alt="HTML tutorial" style="width:42px;height:42px;">
+</a>
+
+<!--
+Link to email Address
+
+Use mailto: inside the href attribute to create a link that opens the user's email program 
+(to let them send a new email):
+
+EX-->
+
+<a href="mailto:someone@example.com">Send email</a>
+
+<!--
+Button as a link
+
+To use an HTML button as a link, you have to add some JavaScript code.
+JavaScript allows you to specify what happens at certain events, such as a click of a button:-->
+
+button onclick="document.location='default.asp'">HTML Tutorial</button>
+
+
+<!--
+Link Titles
+The title attribute specifies extra information about an element. 
+The information is most often shown as a tooltip text when the mouse moves over the element.
+
+EX-->
+
+<a href="https://www.w3schools.com/html/" title="Go to W3Schools HTML section">Visit our HTML Tutorial</a>
+
+
+<!--More examples of Absolute and Relative URLs-->
+<!--full link to web page-->
+
+<a href="https://www.w3schools.com/html/default.asp">HTML tutorial</a>
+
+<!--Link to page Flocated in html folder on current web site-->
+
+<a href="/html/default.asp">HTML tutorial</a>
+
+<!--Link to a page located in the same folder as current page-->
+
+<a href="default.asp">HTML tutorial</a>
+
+<!--////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+HTML LINKS
+Different Colors
+
+Link colors:
+  By default, a link will appear like this (in all browsers):
+  An unvisited link is underlined and blue
+  A visited link is underlined and purple
+  An active link is underlined and red
+  You can change the link state colors, by using CSS:
+
+EX
+Here, an unvisited link will be green with no underline. 
+A visited link will be pink with no underline. 
+An active link will be yellow and underlined. 
+In addition, when mousing over a link (a:hover) it will become red and underlined:-->
+
+
+<style>
+  a:link {
+    color: green;
+    background-color: transparent;
+    text-decoration: none;
+  }
+  
+  a:visited {
+    color: pink;
+    background-color: transparent;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    color: red;
+    background-color: transparent;
+    text-decoration: underline;
+  }
+  
+  a:active {
+    color: yellow;
+    background-color: transparent;
+    text-decoration: underline;
+  }
+  </style>
+
+<!--Link Buttons
+A link can also be styled as a button, by using CSS:-->
+
+<style>
+  a:link, a:visited {
+    background-color: #f44336;
+    color: white;
+    padding: 15px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+  a:hover, a:active {
+    background-color: red;
+  }
+  </style>
+
+<!--CREATE BOOKMARKS
+
+HTML links can be used to create bookmarks, 
+so that readers can jump to specific parts of a web page.
+
+Create a bookmark
+
+  Bookmarks can be useful if a web page is very long.
+  To create a bookmark - first create the bookmark, then add a link to it.
+  When the link is clicked, the page will scroll down or up to the location with the bookmark.
+
+EX first, use the id attribute to create a bookmark:-->
+
+<h2 id="C4">Chapter 4</h2>
+
+<!--Then, add a link to the bookmark ("Jump to Chapter 4"), from within the same page:
+Example-->
+
+<a href="#C4">Jump to Chapter 4</a>
+
+<!--You can also add a link to a bookmark on another page:-->
+
+<a href="html_demo.html#C4">Jump to Chapter 4</a>
+
+<!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+HTML IMAGES
+EX-->
+
+<img src="pic_trulli.jpg" alt="Italian Trulli">
+<img src="img_chania.jpg" alt="Flowers in Chania">
+
+<!--
+HTML Images Syntax
+  The tag <img> is used to embed an image in your web page
+  images are LINKED to web pages. (<img> tag creates a holding space for referenced image)
+  the <img> tag is empty and only contains attributes; no closing tag
+  2 required attributes
+    - src: specifies path to image
+    - alt: specifies alternate text for image
+Syntax-->
+
+<img src="url" alt="alternatetext">
+
+<!--src Attribute
+
+The required src attribute specifies the path (URL) to the image.
+
+Note: When a web page loads, it is the browser, at that moment, 
+that gets the image from a web server and inserts it into the page. 
+Therefore, make sure that the image actually stays in the same spot in 
+relation to the web page, otherwise your visitors will get a broken link icon. 
+The broken link icon and the alt text are shown if the browser cannot find the image.
+above^^
+
+alt Attribute
+The required alt attribute provides an alternate text for an image, 
+if the user for some reason cannot view it (because of slow connection, 
+an error in the src attribute, or if the user uses a screen reader).
+
+The value of the alt attribute should describe the image: above^^
+
+
+If a browser cannot find an image, it will display the value of the alt attribute:-->
+
+<img src="wrongname.gif" alt="Flowers in Chania">
+
+
+<!--Image Size-Width and Height
+You can use the style attribute to specify the width and height of an image.
+-->
+
+<img src="img_girl.jpg" alt="Girl in a jacket" style="width:500px;height:600px;">
+
+<!--Alternatively, you can use the width and height attributes:-->
+
+<img src="img_girl.jpg" alt="Girl in a jacket" width="500" height="600">
+
+<!--The width and height attributes always define the width and height of the image in pixels.
+
+
+Width and Height, or Style?
+The width, height, and style attributes are all valid in HTML.
+
+However, we suggest using the style attribute. 
+It prevents styles sheets from changing the size of images:-->
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+img {
+  width: 100%;
+}
+</style>
+</head>
+<body>
+
+<img src="html5.gif" alt="HTML5 Icon" width="128" height="128">
+
+<img src="html5.gif" alt="HTML5 Icon" style="width:128px;height:128px;">
+
+</body>
+</html>
+
+
+<!--Images in another folder
+If you have your images in a sub-folder, you must include the folder name in the src attribute:-->
+
+<img src="/images/html5.gif" alt="HTML5 Icon" style="width:128px;height:128px;">
+
+<!--Images on Another Server/Website
+Some web sites point to an image on another server.
+
+To point to an image on another server, you must specify an absolute 
+(full) URL in the src attribute:-->
+
+<img src="https://www.w3schools.com/images/w3schools_green.jpg" alt="W3Schools.com">
+
+
+<!--Animated Images
+HTML supports GIFs-->
+
+<img src="programming.gif" alt="Computer Man" style="width:48px;height:48px;">
+
+<!--Image as a Link
+To use an image as a link, put the <img> tag inside the <a> tag:-->
+
+<a href="default.asp">
+  <img src="smiley.gif" alt="HTML tutorial" 
+style="width:42px;height:42px;">
+</a> 
+
+<!--Image Floating
+Use the CSS float property to let the image float 
+to the right or to the left of a text:-->
+
+<p><img src="smiley.gif" alt="Smiley face" style="float:right;width:42px;height:42px;">
+  The image will float to the right of the text.</p>
+  
+<p><img src="smiley.gif" alt="Smiley face" style="float:left;width:42px;height:42px;">
+  The image will float to the left of the text.</p>
+  
+<!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+HTML IMAGE MAPS
+With HTML image maps, you can create clickable areas on an image.
+
+Image Maps
+The HTML <map> tag defines an image map. 
+An image map is an image with clickable areas. 
+The areas are defined with one or more <area> tags.
+
+Try to click on the computer, phone, or the cup of coffee in the image below:
+-->
