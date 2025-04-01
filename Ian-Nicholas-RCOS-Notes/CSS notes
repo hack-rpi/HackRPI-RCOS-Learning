@@ -446,3 +446,400 @@ p {
 
 </body>
 </html>
+
+/*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+CSS COLORS
+Colors are specified using predefined color names, or RGB, HEX, HSL, RGBA, HSLA values.
+
+In CSS, a color can be specified by using a predefined color name:
+
+EX.
+Tomato
+Orange
+DodgerBlue
+MediumSeaGreen
+Gray
+SlateBlue
+Violet
+LightGray
+
+CSS/HTML support 140 standard color names.
+
+
+CSS Background Color
+set the background color for HTML elements: */
+
+<h1 style="background-color:DodgerBlue;">Hello World</h1>
+
+<p style="background-color:Tomato;"> Hiiiiiiiii... </p>
+
+/* 
+CSS Text Color
+You can set the color of text:*/
+
+<h1 style="color:Tomato;">Hello World</h1>
+<p style="color:DodgerBlue;">Lorem ipsum... </p>
+<p style="color:MediumSeaGreen;">Ut wisi enim... </p>
+
+
+/*
+CSS Border Color
+You can set the color of borders:*/
+
+<h1 style="border:2px solid Tomato;">Hello World</h1>
+<h1 style="border:2px solid DodgerBlue;">Hello World</h1>
+<h1 style="border:2px solid Violet;">Hello World</h1>
+
+/*
+CSS Color Values
+
+In CSS, colors can also be specified using RGB values, HEX values, HSL values, RGBA values, and HSLA values:
+
+Same as color name "Tomato":
+
+rgb(255, 99, 71)
+#ff6347
+hsl(9, 100%, 64%)
+
+Same as color name "Tomato", but 50% transparent:
+
+rgba(255, 99, 71, 0.5)
+hsla(9, 100%, 64%, 0.5)
+
+EX.*/
+
+<h1 style="background-color:rgb(255, 99, 71);">... </h1>
+<h1 style="background-color:#ff6357;">... </h1>
+<h1 style="background-color:hsl(9, 100%, 64%);">... </h1>
+
+<h1 style="background-color:rgba(255, 99, 71, 0.5);">... </h1>
+<h1 style="background-color:hsla(9, 100%, 64%, 0.5);">... </h1>
+
+
+/*
+CSS RGB COLORS:
+An RGB color value represents RED, GREEN, and BLUE light sources.
+
+rgb(red, green, blue)
+
+Each parameter (red, green, and blue) defines the intensity of the color between 0 and 255.
+
+For example, rgb(255, 0, 0) is displayed as red, because red is set to its highest value (255) and the others are set to 0.
+
+To display black, set all color parameters to 0, like this: rgb(0, 0, 0).
+
+To display white, set all color parameters to 255, like this: rgb(255, 255, 255).
+
+Shades of gray are often defined using equal values for all the 3 light sources:
+rgb(60, 60, 60)
+rgb(90, 90, 90)
+rgb(120, 120, 120)
+rgb(180, 180, 180)
+rgb(210, 210, 210)
+rgb(240, 240, 240)
+
+
+RGBA Value
+RGBA color values are an extension of RGB color values with an alpha channel - which specifies the opacity for a color.
+
+An RGBA color value is specified with:
+
+rgba(red, green, blue, alpha)
+
+The alpha parameter is a number between 0.0 (fully transparent) and 1.0 (not transparent at all):
+
+
+CSS HEX COLORS:
+A hexadecimal color is specified with: #RRGGBB, where the RR (red), GG (green) and BB (blue) hexadecimal integers specify the components of the color.
+
+HEX Value
+In CSS, a color can be specified using a hexadecimal value in the form:
+
+#rrggbb
+
+Where rr (red), gg (green) and bb (blue) are hexadecimal values between 00 and ff (same as decimal 0-255).
+
+For example, #ff0000 is displayed as red, because red is set to its highest value (ff) and the others are set to the lowest value (00).
+
+To display black, set all values to 00, like this: #000000.
+
+To display white, set all values to ff, like this: #ffffff.  
+
+Shades of gray are often defined using equal values for all the 3 light sources:
+
+Ex:
+#3c3c3c
+#616161
+#787878
+#b4b4b4
+#f0f0f0
+#f9f9f9
+
+
+3 DIGIT HEX VALUE:
+Sometimes you will see a 3-digit hex code in the CSS source.
+
+The 3-digit hex code is a shorthand for some 6-digit hex codes.
+
+The 3-digit hex code has the following form:
+
+#rgb
+
+Where r, g, and b represent the red, green, and blue components with values between 0 and f.
+
+The 3-digit hex code can only be used when both the values (RR, GG, and BB) 
+are the same for each component. 
+So, if we have #ff00cc, it can be written like this: #f0c.
+
+EX.*/
+
+body {
+  background-color: #fc9; /* same as #ffcc99 */
+}
+
+h1 {
+  color: #f0f; /* same as #ff00ff */
+}
+
+p {
+  color: #b58; /* same as #bb5588 */
+}
+
+
+/*
+CSS HSL COLORS:
+HSL stands for hue, saturation, and lightness.
+
+
+HSL Value
+In CSS, a color can be specified using hue, saturation, and lightness (HSL) in the form:
+
+hsl(hue, saturation, lightness)
+
+Hue is a degree on the color wheel from 0 to 360. 0 is red, 120 is green, and 240 is blue.
+
+Saturation is a percentage value. 0% means a shade of gray, and 100% is the full color.
+
+Lightness is also a percentage. 0% is black, 50% is neither light or dark, 100% is white
+
+
+SATURATION:
+Saturation can be described as the intensity of a color.
+
+100% is pure color, no shades of gray.
+
+50% is 50% gray, but you can still see the color.
+
+0% is completely gray; you can no longer see the color.
+
+
+LIGHTNESS:
+The lightness of a color can be described as how much light you want to give the color, where 0% means no light (black), 
+50% means 50% light (neither dark nor light) and 100% means full lightness (white).
+
+
+Shades of Gray are often defined by 
+setting the hue and saturation to 0, and adjust the lightness from 0% to 100% to get darker/lighter shades:
+
+Ex:
+hsl(0, 0%, 0%)
+hsl(0, 0%, 24%)
+hsl(0, 0%, 47%)
+hsl(0, 0%, 71%)
+hsl(0, 0%, 94%)
+hsl(0, 0%, 100%)
+
+
+HSLA Value:
+HSLA color values are an extension of HSL color values with an alpha channel - which specifies the opacity for a color.
+
+An HSLA color value is specified with:
+
+hsla(hue, saturation, lightness, alpha)
+
+The alpha parameter is a number between 0.0 (fully transparent) and 1.0 (not transparent at all):
+
+hsla(9, 100%, 64%, 0)
+hsla(9, 100%, 64%, 0.2)
+hsla(9, 100%, 64%, 0.4)
+hsla(9, 100%, 64%, 0.6)
+hsla(9, 100%, 64%, 0.8)
+hsla(9, 100%, 64%, 1)
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+CSS Backgrounds
+The CSS background properties are used to add background effects for elements.
+
+following CSS background properties:
+
+background-color
+background-image
+background-repeat
+background-attachment
+background-position
+background (shorthand property)
+
+CSS BACKGROUND COLOR
+The background-color property specifies the background color of an element.
+
+EX: */
+
+body {
+  background-color: lightblue;
+}
+
+/*With CSS, a color is most often specified by:
+
+a valid color name - like "red"
+a HEX value - like "#ff0000"
+an RGB value - like "rgb(255,0,0)"
+
+
+OTHER ELEMENTS
+ex:*/
+
+h1 {
+  background-color: green;
+}
+
+div {
+  background-color: lightblue;
+}
+
+p {
+  background-color: yellow;
+}
+
+
+/*OPACITY / TRANSPARENCY
+
+The opacity property specifies the opacity/transparency of an element. 
+It can take a value from 0.0 - 1.0. The lower value, the more transparent:
+
+EX: */
+
+div {
+  background-color: green;
+  opacity: 0.3;
+}
+
+
+/* TRANSPARENCY USING RGBA
+
+If you do not want to apply opacity to child elements, like in our example above, use RGBA color values. The following example sets the opacity for the background color and not the text:
+
+100% opacity
+
+60% opacity
+
+30% opacity
+
+10% opacity
+
+EX:*/
+
+div {
+  background: rgba(0, 128, 0, 0.3) /* Green background with 30% opacity */
+}
+
+
+/*
+CSS background-image
+The background-image property specifies an image to use as the background of an element.
+
+By default, the image is repeated so it covers the entire element.
+
+EX: background image for page*/
+
+body {
+  background-image: url("paper.gif");
+}
+
+/* ex-> bad comnination!!1! */
+
+body {
+  background-image: url("bgdesert.jpg"); /* black text on textured bkground (hearbreak emoji) */
+}
+
+/* The background image can also be set for specific elements, like the <p> element: */
+
+p {
+  background-image: url("paper.gif"); /* only background present for the paragraph */
+}
+
+/*
+CSS Background Image Repeat
+By default, the background-image property repeats an image both horizontally and vertically.
+
+EX*/
+
+body {
+  background-image: url("gradient_bg.png");
+}
+
+/* However-> If the image above is repeated only horizontally (background-repeat: repeat-x;), the background will look better: */
+
+body {
+  background-image: url("gradient_bg.png");
+  background-repeat: repeat-x;
+}
+
+/*To repeat an image vertically, set background-repeat: repeat-y;
+
+
+CSS background-repeat: no-repeat
+Showing the background image only once is also specified by the background-repeat property:
+
+EX*: show background only once*/
+
+body {
+  background-image: url("img_tree.png");
+  background-repeat: no-repeat;
+}
+
+/*
+CSS background-position
+The background-position property 
+is used to specify the position of the background image.
+
+EX: Position the background image in the top-right corner:  */
+
+body {
+  background-image: url("img_tree.png");
+  background-repeat: no-repeat;
+  background-position: right top;
+  margin-right: 200px;
+}
+
+
+/* 
+CSS background-attachment
+The background-attachment property specifies whether the background image should scroll or be fixed (will not scroll with the rest of the page):
+
+EX: Specify that the background image should be fixed: */
+
+body {
+  background-image: url("img_tree.png");
+  background-repeat: no-repeat;
+  background-position: right top;
+  background-attachment: fixed;
+}
+
+/*Example
+Specify that the background image should scroll with the rest of the page:*/
+
+body {
+  background-image: url("img_tree.png");
+  background-repeat: no-repeat;
+  background-position: right top;
+  margin-right: 200px;
+  background-attachment: scroll;
+}
+
+
+/*
+CSS Background Shorthand
