@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Another password game...</title>
+  <link rel="stylesheet" href="stylesheetV1.css" />
+</head>
+<body>
+  <div class="game-container">
+    <h1>Another password game...</h1>
+    <input type="text" id="guessInput" placeholder="Enter your guess..." />    <button id="submitBtn">Guess</button>
+    <p id="feedback"></p>
+    <div id="hintContainer" class="hints"></div>
+    <p class="attempts">Attempts: <span id="attemptCount">0</span></p>
+  </div>
+
+  <script>
+    const correctPassword = "apple"; // CHANGE PASSWORD
+    let attempts = 0;
+  
+    const input = document.getElementById("guessInput");
+    const button = document.getElementById("submitBtn");
+    const feedback = document.getElementById("feedback");
+    const attemptDisplay = document.getElementById("attemptCount");
+    const hintContainer = document.getElementById("hintContainer");
+  
+    function contains(str, pattern) {
+      return pattern.test(str);
+    }
+  
+    function getHintHTML(label, status) {
+      if (status === "match") {
+        return `<p>✅ ${label}</p>`;
+      } else if (status === "mismatch") {
+        return `<p>❌ ${label}</p>`;
+      } else {
+        return `<p>No ${label.toLowerCase()}!</p>`;
+      }
+    }
+  
+    function generateHints(password, guess) {
+    const hints = [];
+
+    const has = {
+        spaceP: password.includes(" "),
+        spaceG: guess.includes(" "),
+        capsP: /[A-Z]/.test(password),
+        capsG: /[A-Z]/.test(guess),
+        lettersP: /[a-zA-Z]/.test(password),
+        lettersG: /[a-zA-Z]/.test(guess),
+        punctP: /[()[\]{}"':;.,?!&~`_-]/.test(password),
+        punctG: /[()[\]{}"':;.,?!&~`_-]/.test(guess),
+        numsP: /\d/.test(password),
+        numsG: /\d/.test(guess),
+        specialP: /[@#$%^*=+|\\\/><]/.test(password),
+        specialG: /[@#$%^*=+|\\\/><]/.test(guess),
+    };
+
+    // if password contains it but guess doesn't->   X (missing component)
+    //if guess contains it but passoword doesnt ->   No (component)!
+    // if both don't contain it                 ->   show nothing
+    // if password and guess contain it         ->   check (component)
+
+    // Space hint
+    if (has.spaceP) {
+        hints.push(getHintHTML("Space", has.spaceG ? "match" : "mismatch"));
+    } else if (has.spaceG) {
+        hints.push(getHintHTML("Space", "none"));
+    }
+
+    // Caps hint
+    if (has.capsP) {
+        hints.push(getHintHTML("Caps", has.capsG ? "match" : "mismatch"));
+    } else if (has.capsG) {
+        hints.push(getHintHTML("Caps", "none"));
+    }
+
+    // Letters hint
+    if (has.lettersP) {
+        hints.push(getHintHTML("Letters", has.lettersG ? "match" : "mismatch"));
+    } else if (has.lettersG) {
+        hints.push(getHintHTML("Letters", "none"));
+    }
+
+    // Punctuation hint
+    if (has.punctP) {
+        hints.push(getHintHTML("Punctuation characters", has.punctG ? "match" : "mismatch"));
+    } else if (has.punctG) {
+        hints.push(getHintHTML("Punctuation characters", "none"));
+    }
+
+    // Numbers hint
+    if (has.numsP) {
+        hints.push(getHintHTML("Numbers", has.numsG ? "match" : "mismatch"));
+    } else if (has.numsG) {
+        hints.push(getHintHTML("Numbers", "none"));
+    }
+
+    // Special characters hint
+    if (has.specialP) {
+        hints.push(getHintHTML("Special characters", has.specialG ? "match" : "mismatch"));
+    } else if (has.specialG) {
+        hints.push(getHintHTML("Special characters", "none"));
+    }
+
+    return hints;
+    }
+
+  
+    button.addEventListener("click", () => {
+      const guess = input.value.trim();
+      attempts++;
+      attemptDisplay.textContent = attempts;
+  
+      const guessLength = guess.length;
+      const passwordLength = correctPassword.length;
+      const lengthDifference = Math.abs(guessLength - passwordLength);
+  
+      // Clear hints
+      hintContainer.innerHTML = "";
+  
+      if (guess === correctPassword) {
+        feedback.textContent = "✅ Correct! You guessed the password!";
+        feedback.className = "success";
+        input.disabled = true;
+        button.disabled = true;
+      } else {
+        if (guessLength < passwordLength) {
+          feedback.className = "warning";
+          feedback.textContent = attempts >= 5
+            ? `🔒 Too short by ${lengthDifference}`
+            : `🔒 Too short!`;
+        } else if (guessLength > passwordLength) {
+          feedback.className = "warning";
+          feedback.textContent = attempts >= 5
+            ? `🔒 Too long by ${lengthDifference}`
+            : `🔒 Too long!`;
+        } else {
+          feedback.className = "error";
+          feedback.textContent = "✅ Right length!";
+        }
+  
+        // Show batch hints after 3 attempts
+        if (attempts >= 3) {
+          const batchHints = generateHints(correctPassword, guess);
+          hintContainer.innerHTML = batchHints.join("");
+        }
+      }
+  
+      input.value = "";
+    });
+  </script>
+  
+  
