@@ -1,0 +1,155 @@
+body {
+    background-color: #000000;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  .game-container {
+    background-color: #000000;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 16px rgb(255, 252, 252);
+    text-align: top;
+    width: 300px;
+  }
+  
+  h1 {
+    font-size: 1.5rem;
+    color: #f0f0f0;
+    margin-bottom: 1rem;
+  }
+  
+  input[type="password"] {
+    width: 100%;
+    padding: 0.6rem;
+    margin-bottom: 1rem;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    font-size: 1rem;
+  }
+  
+  button {
+    padding: 0.6rem 1.2rem;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  button:hover {
+    background-color: #357ab8;
+  }
+  
+  #feedback {
+    margin-top: 1rem;
+    font-weight: bold;
+  }
+  
+  .success {
+    color: green;
+  }
+
+  .progress{
+    color:#7ec80f
+  }
+  
+  .warning {
+    color: orange;
+  }
+  
+  .error {
+    color: red;
+  }
+  
+  .attempts {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 0.5rem;
+  }
+  
+  .hints p {
+    margin: 4px 0;
+    font-size: 0.95rem;
+  }
+
+  /* 🏆 Best Guess */
+.best-guess {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: goldenrod;
+  }
+  
+  /* 🧠 Toggle History Button */
+  .toggle-history {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 0.4rem 1rem;
+    font-size: 0.9rem;
+    border-radius: 10px;
+    background-color: #555;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .toggle-history:hover {
+    background-color: #333;
+  }
+  
+  /* 🗃️ Slide-out History Panel */
+  .history-panel {
+    position: fixed;
+    top: 0;
+    right: -300px; /* initially hidden off-screen */
+    width: 280px;
+    height: 100vh;
+    background-color: #ffffff;
+    box-shadow: -4px 0 12px rgba(0,0,0,0.1);
+    padding: 1rem;
+    transition: right 0.4s ease;
+    overflow-y: auto;
+    z-index: 1000;
+  }
+  
+  .history-panel.open {
+    right: 0; /* slide into view */
+  }
+  
+  .history-panel h2 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.2rem;
+  }
+  
+  #historyContent {
+    margin-top: 1rem;
+  }
+  
+  .history-entry {
+    border-top: 1px solid #ccc;
+    padding-top: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  
+  .history-entry p {
+    margin: 0.25rem 0;
+    font-size: 0.95rem;
+  }
+  
+  .char-match {
+    color: #7ec80f;
+    font-weight: bold;
+  }
+  

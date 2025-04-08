@@ -6,7 +6,29 @@
   <title>Another password game...</title>
   <link rel="stylesheet" href="stylesheetV1.css" />
 </head>
+
+<!-- ☀️ Dark Mode Toggle Button -->
+<button id="darkModeToggle" class="dark-toggle">☀️</button>
+
+<link id="themeStylesheet" rel="stylesheet" href="stylesheetV2.css" />
+
 <body>
+
+<!-- 🏆 Best Guess Section -->
+<div id="bestGuess" class="best-guess">
+    Best Guess: <span id="bestGuessText">None</span>
+</div>
+  
+  <!-- 🧠 History Toggle Button -->
+  <button id="toggleHistoryBtn" class="toggle-history">🧠 Hint History</button>
+  
+  <!-- 🗃️ Slide-out History Panel -->
+  <div id="historyPanel" class="history-panel">
+    <h2>Hint History</h2>
+    <div id="historyContent"></div>
+  </div>
+  
+
   <div class="game-container">
     <h1>Another password game...</h1>
     <input type="text" id="guessInput" placeholder="Enter your guess..." />    <button id="submitBtn">Guess</button>
@@ -109,47 +131,182 @@
 
   
     button.addEventListener("click", () => {
-      const guess = input.value.trim();
-      attempts++;
-      attemptDisplay.textContent = attempts;
-  
-      const guessLength = guess.length;
-      const passwordLength = correctPassword.length;
-      const lengthDifference = Math.abs(guessLength - passwordLength);
-  
-      // Clear hints
-      hintContainer.innerHTML = "";
-  
-      if (guess === correctPassword) {
+    const guess = input.value.trim();
+    attempts++;
+    attemptDisplay.textContent = attempts;
+
+    const guessLength = guess.length;
+    const passwordLength = correctPassword.length;
+    const lengthDifference = Math.abs(guessLength - passwordLength);
+
+    hintContainer.innerHTML = "";
+
+    if (guess === correctPassword) {
         feedback.textContent = "✅ Correct! You guessed the password!";
         feedback.className = "success";
         input.disabled = true;
         button.disabled = true;
-      } else {
+    } else {
         if (guessLength < passwordLength) {
-          feedback.className = "warning";
-          feedback.textContent = attempts >= 5
+        feedback.className = "warning";
+        feedback.textContent = attempts >= 5
             ? `🔒 Too short by ${lengthDifference}`
             : `🔒 Too short!`;
         } else if (guessLength > passwordLength) {
-          feedback.className = "warning";
-          feedback.textContent = attempts >= 5
+        feedback.className = "warning";
+        feedback.textContent = attempts >= 5
             ? `🔒 Too long by ${lengthDifference}`
             : `🔒 Too long!`;
         } else {
-          feedback.className = "error";
-          feedback.textContent = "✅ Right length!";
+        feedback.className = "progress";
+        feedback.textContent = "✔️ Right length!";
         }
-  
-        // Show batch hints after 3 attempts
-        if (attempts >= 3) {
-          const batchHints = generateHints(correctPassword, guess);
-          hintContainer.innerHTML = batchHints.join("");
+
+        // Show hints after 3 attempts
+        if (attempts >= 1) {
+        const batchHints = generateHints(correctPassword, guess);
+        hintContainer.innerHTML = batchHints.join("");
+
+        const score = calculateGuessScore(correctPassword, guess, batchHints, lengthDifference);
+        addToHistory(attempts, guess, batchHints, score);
+
+        if (score > bestScore) {
+            bestScore = score;
+            bestGuess = guess;
+            bestGuessText.textContent = `${guess} |Score: ${score}|`;
         }
-      }
-  
-      input.value = "";
+        }
+    }
+
+    input.value = "";
     });
+
+
+    // Allow pressing Enter to submit the guess
+    input.addEventListener("keypress", (event) => {
+    if (event.key === "Enter") {
+        button.click(); // Triggers the same logic as clicking the Guess button
+    }
+    });
+
+
+    // Best Guess tracking
+    let bestScore = -Infinity;
+    let bestGuess = "";
+    const bestGuessText = document.getElementById("bestGuessText");
+    const historyPanel = document.getElementById("historyPanel");
+    const historyContent = document.getElementById("historyContent");
+    const toggleHistoryBtn = document.getElementById("toggleHistoryBtn");
+
+    function calculateGuessScore(password, guess, hints, lengthDiff) {
+    let score = 0;
+
+    // Base scoring from hints
+    for (let hint of hints) {
+        if (hint.includes("✅")) score += 1;
+        else if (hint.includes("❌") || hint.includes("No ")) score -= 1;
+    }
+
+    // Length penalty
+    score -= lengthDiff;
+
+    // Position match bonus
+    const minLength = Math.min(password.length, guess.length);
+    for (let i = 0; i < minLength; i++) {
+        if (password[i] === guess[i]) {
+        score += 1;
+        }
+    }
+
+    return score;
+    }
+
+
+    function addToHistory(attemptNum, guess, hints, score) {
+    const entry = document.createElement("div");
+    entry.classList.add("history-entry");
+
+    const passwordArr = correctPassword.split('');
+    const guessArr = guess.split('');
+    const matched = Array(passwordArr.length).fill(false);
+    const formatted = [];
+
+    // First pass: green for exact matches
+    for (let i = 0; i < guessArr.length; i++) {
+        if (passwordArr[i] === guessArr[i]) {
+        formatted[i] = `<span class="char-match">${guessArr[i]}</span>`;
+        matched[i] = true;
+        } else {
+        formatted[i] = null; // to be filled in second pass
+        }
+    }
+
+    // Second pass: yellow (wrong position), red (not present)
+    for (let i = 0; i < guessArr.length; i++) {
+        if (formatted[i] !== null) continue;
+
+        const letter = guessArr[i];
+        let found = false;
+
+        for (let j = 0; j < passwordArr.length; j++) {
+        if (!matched[j] && passwordArr[j] === letter) {
+            matched[j] = true;
+            found = true;
+            break;
+        }
+        }
+
+        const colorClass = found ? "char-close" : "char-wrong";
+        formatted[i] = `<span class="${colorClass}">${letter}</span>`;
+    }
+
+    entry.innerHTML = `
+        <p><strong>Attempt #${attemptNum}</strong></p>
+        <hr />
+        <p>Guess: <code>${formatted.join("")}</code></p>
+        <p>Score: ${score}</p>
+        <p>Hints:</p>
+        ${hints.map(h => `<p>${h.replaceAll('<p>', '').replaceAll('</p>', '')}</p>`).join("")}
+    `;
+
+    historyContent.prepend(entry);
+    }
+
+
+
+
+    toggleHistoryBtn.addEventListener("click", () => {
+    historyPanel.classList.toggle("open");
+    });
+
+    // Allow clicking the history panel itself to close it
+    document.querySelector("#historyPanel h2").addEventListener("click", () => {
+    historyPanel.classList.remove("open");
+    });
+
+
+    // Persistent Dark Mode Toggle
+    const themeLink = document.getElementById("themeStylesheet");
+    const darkModeToggle = document.getElementById("darkModeToggle");
+
+    // Check saved preference
+    let darkMode = localStorage.getItem("darkMode") === "true";
+
+    // Apply on page load
+    applyTheme();
+
+    darkModeToggle.addEventListener("click", () => {
+    darkMode = !darkMode;
+    localStorage.setItem("darkMode", darkMode);
+    applyTheme();
+    });
+
+    function applyTheme() {
+    themeLink.setAttribute("href", darkMode ? "styling_dark.css" : "styling.css");
+    darkModeToggle.textContent = darkMode ? "🌞" : "☀️";
+    };
+
+
   </script>
   
   
