@@ -1,0 +1,166 @@
+Introduction to TypeScript:
+TypeScript is a superset of JavaScript that adds static typing. It helps catch errors during development and makes your code 
+more predictable and maintainable. 
+
+Key Features:
+    - Static Typing: Define variable types explicitly
+    - Interfaces: Define the shape of objects
+    - Classes and Inheritance: Write object-oriented code
+    - Type Inference: Automatically infer types when possible
+
+Task                        Tool
+Structure/header layout      HTML
+Fonts, colors, alignment     CSS
+Dynamic text (optional)      TypeScript
+
+
+Basic Syntax: 
+
+let username: string = "hackRPI";
+let year: number = 2025;
+let isEventLive: boolean = true;
+let name = "hackRPI"; // inferred as string
+
+Basic Footer Code w/ CSS, HTML, and TypeScript:
+<footer id="site-footer">
+    <div class="footer-content">
+        <p id="footer-text"></p>
+        <nav class="footer-nav">
+            <a href="/about">About Us</a>
+            <a href="/contact">Contact</a>
+            <a href="/privacy">Privacy Policy</a>
+        </nav>
+    </div>
+</footer>
+
+The <> are HTML tags, used to define the structure and elements of a webpage. Tags usually come in pairs:
+    - <tagname> — the opening tag
+    - </tagname> — the closing tag
+
+<footer>: A semantic HTML tag that represents the footer section of the webpage
+<div class="footer-content">: <div>: A generic container used to group other HTML elements
+<a href="...">...</a>: These are anchor tags used for hyperlinks
+    - href="/about" means clicking the “About Us” link will take you to the /about page of the site.
+    - The text inside (About Us, Contact, etc.) is what the user sees and clicks on.
+
+Tag           Purpose
+ <footer>      Marks the page's footer area
+ <div>         Groups and organizes content
+ <p>           Displays paragraph text
+ <nav>         Groups navigation links
+ <a>           Creates a clickable hyperlink
+
+Stylistic Components of Footer: 
+
+/* Footer background and base font color */
+#site-footer {
+    background-color: #1a1a1a; /* dark background */
+    color: white; /* text color */
+    padding: 20px 0;
+    text-align: center;
+    font-family: 'Segoe UI', sans-serif; /* font type */
+}
+
+/* Heading inside footer */
+.footer-heading {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffd700; /* golden yellow */
+    margin-bottom: 10px;
+}
+
+/* Footer paragraph text */
+#footer-text {
+    font-size: 14px;
+    color: #cccccc;
+    margin-top: 5px;
+}
+
+/* Footer nav links */
+.footer-nav a {
+    color: #bbbbbb;
+    margin: 0 15px;
+    text-decoration: none; /* removes underline */
+}
+
+/* Link hover effect */
+.footer-nav a:hover {
+    color: white;
+    text-decoration: underline; /* adds underline on hover */
+}
+
+Style Type                  Where it's Defined
+ Text color                  CSS (e.g., color: white)
+ Font type                   CSS (e.g., font-family)
+ Underline links             CSS (text-decoration)
+
+
+ Basic Header Code w/ CSS< HTML, TypeScript:
+ <header id="site-header">
+  <div class="header-content">
+    <h1 class="logo">HackRPI</h1>
+    <nav class="header-nav">
+      <a href="/">Home</a>
+      <a href="/schedule">Schedule</a>
+      <a href="/sponsors">Sponsors</a>
+      <a href="/faq">FAQ</a>
+    </nav>
+  </div>
+</header>
+
+<header>: A semantic HTML5 tag that defines the top section of the page — usually contains logo, title, and nav links
+id="site-header": Used to uniquely identify this header in the page
+class="header-content": The class name lets you apply CSS styling to everything inside
+<h1>: Represents the main heading of this section or page
+    - class="logo":
+    - Identifies this heading for styling (e.g., larger font, bold)
+"HackRPI":
+    - The text inside the heading. This is what users see
+<nav>: Another semantic HTML tag, used to group navigation links
+    - class="header-nav": For styling all the nav links together
+<a>: An anchor tag, which creates a hyperlink.
+    - href="/": The path the link goes to when clicked.
+
+Element             Purpose
+ <header>            Defines the top of the website
+ <div>               Organizes content inside the header
+ <h1>                Displays the logo/title
+ <nav>               Contains all navigation links
+ <a href="...">      Defines each clickable link
+
+
+Stylistic Components of Header Code: 
+#site-header {
+  background-color: #000000;
+  color: white;
+  padding: 15px 0;
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.header-nav a {
+  color: #bbbbbb;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+.header-nav a:hover {
+  color: white;
+  text-decoration: underline;
+}
