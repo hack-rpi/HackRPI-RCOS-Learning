@@ -62,6 +62,11 @@
     }
   
     function generateHints(password, guess) {
+    
+    if (password === guess) {
+        return []; // No hints if the guess is perfect
+    }
+
     const hints = [];
 
     const has = {
@@ -141,11 +146,19 @@
 
     hintContainer.innerHTML = "";
 
-    if (guess === correctPassword) {
+    if (guess == correctPassword) {
         feedback.textContent = "✅ Correct! You guessed the password!";
         feedback.className = "success";
         input.disabled = true;
         button.disabled = true;
+
+        // Generate hints and score even if correct
+        const batchHints = generateHints(correctPassword, guess);
+        hintContainer.innerHTML = batchHints.join("");
+        
+        const score = calculateGuessScore(correctPassword, guess, batchHints, 0); // lengthDiff = 0 when correct
+        addToHistory(attempts, guess, batchHints, score);
+
     } else {
         if (guessLength < passwordLength) {
         feedback.className = "warning";
@@ -162,7 +175,7 @@
         feedback.textContent = "✔️ Right length!";
         }
 
-        // Show hints after 3 attempts
+        // Show hints after first attempt
         if (attempts >= 1) {
         const batchHints = generateHints(correctPassword, guess);
         hintContainer.innerHTML = batchHints.join("");
@@ -188,7 +201,6 @@
         button.click(); // Triggers the same logic as clicking the Guess button
     }
     });
-
 
     // Best Guess tracking
     let bestScore = -Infinity;
@@ -265,14 +277,13 @@
         <hr />
         <p>Guess: <code>${formatted.join("")}</code></p>
         <p>Score: ${score}</p>
-        <p>Hints:</p>
-        ${hints.map(h => `<p>${h.replaceAll('<p>', '').replaceAll('</p>', '')}</p>`).join("")}
-    `;
+        ${hints.length > 0 
+        ? `<p>Hints:</p>${hints.map(h => `<p>${h.replaceAll('<p>', '').replaceAll('</p>', '')}</p>`).join("")}` 
+        : ""
+        }`;
 
     historyContent.prepend(entry);
     }
-
-
 
 
     toggleHistoryBtn.addEventListener("click", () => {
@@ -305,6 +316,14 @@
     themeLink.setAttribute("href", darkMode ? "styling_dark.css" : "styling.css");
     darkModeToggle.textContent = darkMode ? "🌞" : "☀️";
     };
+
+    document.addEventListener("keydown", (event) => {
+    // Trigger only if Tab is pressed without focusing on input
+    if (event.key === "Tab") {
+        event.preventDefault(); // Prevent normal tab behavior
+        historyPanel.classList.toggle("open");
+    }
+    });
 
 
   </script>
