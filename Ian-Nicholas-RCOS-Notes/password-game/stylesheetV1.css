@@ -1,180 +1,301 @@
 body {
-  background-color: #f0f4f8;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-}
+    background-color: #f0f4f8;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  .game-container {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    text-align: center;
+    width: 320px;
+  }
+  
+  h1 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 1rem;
+  }
+  
+  input[type="password"] {
+    width: 100%;
+    padding: 0.6rem;
+    margin-bottom: 1rem;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    font-size: 1rem;
+  }
+  
+  button {
+    padding: 0.6rem 1.2rem;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  button:hover {
+    background-color: #357ab8;
+  }
+  
+  #feedback {
+    margin-top: 1rem;
+    font-weight: bold;
+  }
+  
+  .success {
+    color: green;
+  }
 
-.game-container {
-  background-color: #ffffff;
-  padding: 2rem;
-  border-radius: 20px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-  text-align: center;
-  width: 300px;
-}
+  .progress{
+    color:#45287c
+  }
+  
+  .warning {
+    color: rgb(222, 144, 0);
+  }
+  
+  .error {
+    color: rgb(239, 0, 0);
+  }
+  
+  .attempts {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 0.5rem;
+  }
+  
+  .hints p {
+    margin: 4px 0;
+    font-size: 0.95rem;
+  }
 
-h1 {
-  font-size: 1.5rem;
-  color: #333;
-  margin-bottom: 1rem;
-}
+  /* 🏆 Best Guess */
+.best-guess {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: goldenrod;
+  }
+  
+  /* 🧠 Toggle History Button */
+  .toggle-history {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 0.4rem 1rem;
+    font-size: 0.9rem;
+    border-radius: 10px;
+    background-color: #555;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .toggle-history:hover {
+    background-color: #333;
+  }
+  
+  /* 🗃️ Slide-out History Panel */
+  .history-panel {
+    position: fixed;
+    top: 0;
+    right: -300px; /* initially hidden off-screen */
+    width: 280px;
+    height: 100vh;
+    background-color: #ffffff;
+    box-shadow: -4px 0 12px rgba(0,0,0,0.1);
+    padding: 1rem;
+    transition: right 0.4s ease;
+    overflow-y: auto;
+    z-index: 1000;
+  }
+  
+  .history-panel.open {
+    right: 0; /* slide into view */
+  }
+  
+  .history-panel h2 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.2rem;
+  }
+  
+  #historyContent {
+    margin-top: 1rem;
+  }
+  
+  .history-entry {
+    border-top: 1px solid #ccc;
+    padding-top: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  
+  .history-entry p {
+    margin: 0.25rem 0;
+    font-size: 0.95rem;
+  }
+  
+  .char-match {
+    color: #3cb500;
+  }
+  
+  .char-close{
+    color: rgb(199, 185, 0);
+  }
 
-input[type="password"] {
-  width: 100%;
-  padding: 0.6rem;
-  margin-bottom: 1rem;
-  border: 2px solid #ddd;
+  .char-wrong{
+    color:rgba(255, 53, 53, 0.776);
+  }
+
+  .dark-toggle {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    padding: 0.4rem 0.8rem;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    background-color: #ffffff;
+    color: #ffd700;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    transition: background-color 0.3s ease;
+  }
+  
+  .dark-toggle:hover {
+    background-color: #5959596d;
+  }
+  
+/* 🎮 Mode Toggle Button */
+.mode-toggle {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  padding: 0.6rem 0.9rem;
+  font-size: 1.2rem;
   border-radius: 10px;
-  font-size: 1rem;
-}
-
-button {
-  padding: 0.6rem 1.2rem;
   background-color: #4a90e2;
   color: white;
   border: none;
-  border-radius: 10px;
-  font-size: 1rem;
   cursor: pointer;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+/* 🧩 Mode Selection Popup */
+.mode-popup {
+  position: absolute;
+  bottom: 80px;
+  right: 20px;
+  background: white;
+  padding: 1rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: opacity 0.3s ease;
+}
+
+.mode-popup.hidden {
+  display: none;
+}
+
+.mode-popup h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: #ffffff;
+}
+
+.mode-btn {
+  padding: 0.4rem 1rem;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background-color: #4a90e2;
+  color: white;
   transition: background-color 0.2s ease;
 }
 
-button:hover {
-  background-color: #357ab8;
+.mode-btn:hover {
+  background-color: #61aff4;
+  color:black;
 }
 
-#feedback {
-  margin-top: 1rem;
-  font-weight: bold;
+body:not(.dark-mode) .mode-popup {
+  background-color: white;
+  color: black;
 }
 
-.success {
-  color: green;
+body:not(.dark-mode) .mode-popup h3 {
+  color: #333;
 }
 
-.progress{
-  color:#45287c
-}
-
-.warning {
-  color: orange;
-}
-
-.error {
-  color: red;
-}
-
-.attempts {
-  font-size: 0.9rem;
-  color: #666;
-  margin-top: 0.5rem;
-}
-
-.hints p {
-  margin: 4px 0;
-  font-size: 0.95rem;
-}
-
-/* 🏆 Best Guess */
-.best-guess {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: goldenrod;
-}
-
-/* 🧠 Toggle History Button */
-.toggle-history {
-  position: absolute;
-  top: 20px;
-  right: 20px;
+.game-mode-btn {
   padding: 0.4rem 1rem;
   font-size: 0.9rem;
-  border-radius: 10px;
-  background-color: #555;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background-color: #4a90e2;
   color: white;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.2s ease;
 }
 
-.toggle-history:hover {
-  background-color: #333;
+.game-mode-btn:hover {
+  background-color: #61aff4;
+  color: black
 }
 
-/* 🗃️ Slide-out History Panel */
-.history-panel {
-  position: fixed;
-  top: 0;
-  right: -300px; /* initially hidden off-screen */
-  width: 280px;
-  height: 100vh;
-  background-color: #ffffff;
-  box-shadow: -4px 0 12px rgba(0,0,0,0.1);
-  padding: 1rem;
-  transition: right 0.4s ease;
-  overflow-y: auto;
-  z-index: 1000;
-}
-
-.history-panel.open {
-  right: 0; /* slide into view */
-}
-
-.history-panel h2 {
-  margin-top: 0;
-  color: #333;
-  font-size: 1.2rem;
-}
-
-#historyContent {
-  margin-top: 1rem;
-}
-
-.history-entry {
-  border-top: 1px solid #ccc;
-  padding-top: 0.5rem;
-  margin-top: 0.5rem;
-}
-
-.history-entry p {
-  margin: 0.25rem 0;
-  font-size: 0.95rem;
-}
-
-.char-match {
-  color: #7ec80f;
-}
-
-.char-close{
-  color: rgb(202, 191, 31);
-}
-
-.char-wrong{
-  color:rgb(224, 40, 40);
-}
-
-.dark-toggle {
+/* 🕒 Timer styling */
+.game-timer {
   position: absolute;
-  bottom: 20px;
-  left: 20px;
-  padding: 0.4rem 0.8rem;
-  font-size: 1.1rem;
-  border-radius: 10px;
-  background-color: #222;
-  color: #ffd700;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
-  transition: background-color 0.3s ease;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+  transition: color 0.3s ease;
 }
 
-.dark-toggle:hover {
-  background-color: #444;
+/* 🔐 Password reveal */
+.reveal-password {
+  position: absolute;
+  top: 140px; /* adjust if needed */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-align: center;
+  z-index: 10;
+  width: 100%;
+  padding: 0.5rem;
+  transition: color 0.5s ease;
+}
+
+.reveal-password.hidden {
+  display: none;
+}
+
+.hidden {
+  display: none;
+}
+
+.reveal-password.failure {
+  color: purple;
 }

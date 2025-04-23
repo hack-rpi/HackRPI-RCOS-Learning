@@ -12,12 +12,31 @@
 
 <link id="themeStylesheet" rel="stylesheet" href="stylesheetV2.css" />
 
+<!-- 🎮 Mode Select Button -->
+<button id="modeToggleBtn" class="mode-toggle">🎮</button>
+
+<!-- 🧩 Mode Select Popup -->
+<div id="modePopup" class="mode-popup hidden">
+  <h3>Select Difficulty</h3>
+  <button class="mode-btn" data-mode="easy">Easy</button>
+  <button class="mode-btn" data-mode="medium">Medium</button>
+  <button class="mode-btn" data-mode="hard">Hard</button>
+</div>
+
+<!-- ⏱️ Game Mode Selection Popup -->
+<div id="gameModePopup" class="mode-popup hidden">
+    <h3>Select Game Mode</h3>
+    <button class="game-mode-btn" data-gamemode="time">Time Attack</button>
+    <button class="game-mode-btn" data-gamemode="trial">Trial Mode</button>
+  </div>
+  
+
 <body>
 
 <!-- 🏆 Best Guess Section -->
-<div id="bestGuess" class="best-guess">
+<div id="bestGuess" class="best-guess hidden">
     Best Guess: <span id="bestGuessText">None</span>
-</div>
+  </div>
   
   <!-- 🧠 History Toggle Button -->
   <button id="toggleHistoryBtn" class="toggle-history">🧠 Hint History</button>
@@ -27,7 +46,13 @@
     <h2>Hint History</h2>
     <div id="historyContent"></div>
   </div>
+
+
+  <!-- 🕒 Timer Display -->
+  <div id="timer" class="game-timer hidden">Time Left: 120s</div>
   
+<!-- 🔐 Reveal Password -->
+<div id="revealPassword" class="reveal-password hidden"></div>
 
   <div class="game-container">
     <h1>Another password game...</h1>
@@ -37,8 +62,19 @@
     <p class="attempts">Attempts: <span id="attemptCount">0</span></p>
   </div>
 
+
   <script>
-    const correctPassword = "apple"; // CHANGE PASSWORD
+
+
+    function themedColor(lightModeColor, darkModeColor) {
+    return darkMode ? darkModeColor : lightModeColor;
+    }
+
+    ////////////////////////////GLOBAL FLAG//////////////////////////////
+    let demoMode = true;
+
+
+    let correctPassword = "APPLW"; // CHANGE PASSWORD
     let attempts = 0;
   
     const input = document.getElementById("guessInput");
@@ -74,8 +110,8 @@
         spaceG: guess.includes(" "),
         capsP: /[A-Z]/.test(password),
         capsG: /[A-Z]/.test(guess),
-        lettersP: /[a-zA-Z]/.test(password),
-        lettersG: /[a-zA-Z]/.test(guess),
+        lettersP: /[a-z]/.test(password),
+        lettersG: /[a-z]/.test(guess),
         punctP: /[()[\]{}"':;.,?!&~`_-]/.test(password),
         punctG: /[()[\]{}"':;.,?!&~`_-]/.test(guess),
         numsP: /\d/.test(password),
@@ -134,9 +170,48 @@
     return hints;
     }
 
+    let timerStarted = false;
+    let interval;
+
+    function startTimer() {
+    interval = setInterval(() => {
+        timeLeft--;
+        timerDisplay.textContent = `Time Left: ${timeLeft}s`;
+
+        if (timeLeft === 30) {
+        timerDisplay.style.color = "yellow";
+        setTimeout(() => timerDisplay.style.color = themedColor("black", "white")
+        , 2000);
+        }
+
+        if (timeLeft <= 10 && timeLeft > 0) {
+        timerDisplay.style.color = timeLeft % 2 === 0 ? "red" : themedColor("black", "white");
+        }
+
+        if (timeLeft <= 0) {
+        clearInterval(interval);
+        timerDisplay.textContent = "Time's up!";
+        timerDisplay.style.color = "rgb(239, 0, 0)";
+
+        input.disabled = true;
+        button.disabled = true;
+        feedback.textContent = "Try again later :(";
+        feedback.className = "error";
+
+        revealDiv.textContent = `The correct password was: "${correctPassword}"`;
+        revealDiv.classList.remove("hidden");
+        revealDiv.classList.add("failure");
+        }
+    }, 1000);
+    }
+
   
     button.addEventListener("click", () => {
     const guess = input.value.trim();
+    if (!timerStarted && selectedGameMode === "time") {
+    startTimer();
+    timerStarted = true;}
+
     attempts++;
     attemptDisplay.textContent = attempts;
 
@@ -147,7 +222,9 @@
     hintContainer.innerHTML = "";
 
     if (guess == correctPassword) {
-        feedback.textContent = "✅ Correct! You guessed the password!";
+        clearInterval(interval); // ⛔ Stop timer if running
+        timerDisplay.style.color = darkMode ? "hotpink" : "purple"; // 🟣💗 Freeze in color
+        feedback.textContent = "✅ Correct! You guessed the password :)";
         feedback.className = "success";
         input.disabled = true;
         button.disabled = true;
@@ -172,7 +249,7 @@
             : `🔒 Too long!`;
         } else {
         feedback.className = "progress";
-        feedback.textContent = "✔️ Right length!";
+        feedback.textContent = "Right length!";
         }
 
         // Show hints after first attempt
@@ -183,10 +260,11 @@
         const score = calculateGuessScore(correctPassword, guess, batchHints, lengthDifference);
         addToHistory(attempts, guess, batchHints, score);
 
-        if (score > bestScore) {
+        if (score >= bestScore) {
             bestScore = score;
             bestGuess = guess;
             bestGuessText.textContent = `${guess} |Score: ${score}|`;
+            document.getElementById("bestGuess").classList.remove("hidden");
         }
         }
     }
@@ -286,6 +364,7 @@
     }
 
 
+
     toggleHistoryBtn.addEventListener("click", () => {
     historyPanel.classList.toggle("open");
     });
@@ -313,9 +392,13 @@
     });
 
     function applyTheme() {
-    themeLink.setAttribute("href", darkMode ? "styling_dark.css" : "styling.css");
-    darkModeToggle.textContent = darkMode ? "🌞" : "☀️";
-    };
+    const isDark = darkMode;
+    themeLink.setAttribute("href", isDark ? "styling_dark.css" : "styling.css");
+    darkModeToggle.textContent = isDark ? "🌙" : "☀️";
+
+    // Dynamically set a class on the <body>
+    document.body.classList.toggle("dark-mode", isDark);
+    }
 
     document.addEventListener("keydown", (event) => {
     // Trigger only if Tab is pressed without focusing on input
@@ -325,6 +408,121 @@
     }
     });
 
+    let gameMode = "easy"; // default mode
+
+    const modeToggleBtn = document.getElementById("modeToggleBtn");
+    const modePopup = document.getElementById("modePopup");
+    const modeButtons = document.querySelectorAll(".mode-btn");
+
+    modeToggleBtn.addEventListener("click", () => {
+    const modeIsOpen = !modePopup.classList.contains("hidden");
+    
+    // Always close both popups before deciding what to do
+    modePopup.classList.add("hidden");
+    gameModePopup.classList.add("hidden");
+
+    // If it was previously closed, open it (toggle behavior)
+    if (!modeIsOpen) {
+        modePopup.classList.remove("hidden");
+    }
+    });
+
+
+    const gameModePopup = document.getElementById("gameModePopup");
+    let selectedDifficulty = "easy"; // Default
+    let selectedGameMode = "";       // Will store "time" or "trial"
+
+    modeButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+        selectedDifficulty = btn.dataset.mode;
+        modePopup.classList.add("hidden");
+
+        // Show game mode popup
+        gameModePopup.classList.remove("hidden");
+    });
+    });
+
+    const gameModeButtons = document.querySelectorAll(".game-mode-btn");
+
+    gameModeButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+        selectedGameMode = btn.dataset.gamemode;
+        gameModePopup.classList.add("hidden");
+
+        // You can now use selectedDifficulty and selectedGameMode
+        alert(`Difficulty: ${selectedDifficulty}\nGame Mode: ${selectedGameMode}`);
+        
+        // TODO: Setup actual behavior here
+        if (selectedDifficulty === "easy" && selectedGameMode === "time") {
+        startTimeAttack();
+        }
+
+    });
+    });
+
+    // Close popups if clicking outside of them
+    document.addEventListener("click", (e) => {
+    const isClickInsideModePopup = modePopup.contains(e.target);
+    const isClickInsideGameModePopup = gameModePopup.contains(e.target);
+    const isClickOnToggle = modeToggleBtn.contains(e.target);
+
+    if (!isClickInsideModePopup && !isClickInsideGameModePopup && !isClickOnToggle) {
+        modePopup.classList.add("hidden");
+        gameModePopup.classList.add("hidden");
+    }
+    });
+
+    const timerDisplay = document.getElementById("timer");
+    const revealDiv = document.getElementById("revealPassword");
+
+    const easyPasswords = [
+    "Cat$4", "BIRD#3", "Zebra9!", "Monk3y!", "Fish_7", "Apple1!", "GR8Duck", "Star$9", "Sky@5", "Lion2$"
+    ];
+
+    function startTimeAttack() {
+    resetGame();
+    demoMode = false;
+
+    document.getElementById("timer").classList.remove("hidden");
+    const chosenPassword = easyPasswords[Math.floor(Math.random() * easyPasswords.length)];
+    correctPassword = chosenPassword;
+
+    attempts = 0;
+    attemptDisplay.textContent = 0;
+    input.disabled = false;
+    button.disabled = false;
+    feedback.textContent = "";
+    hintContainer.innerHTML = "";
+    historyContent.innerHTML = "";
+    bestGuessText.textContent = "None";
+    document.getElementById("bestGuess").classList.add("hidden");
+    
+    timeLeft = 150; //use this to set time
+    timerStarted = false;
+    timerDisplay.textContent = `Time Left: ${timeLeft}s`;};
+
+
+    // no timer in demo mode
+    timerDisplay.classList.add("hidden");
+
+    function resetGame() {
+    attempts = 0;
+    bestScore = -Infinity;
+    bestGuess = "";
+    attemptDisplay.textContent = "0";
+    input.value = "";
+    input.disabled = false;
+    button.disabled = false;
+    feedback.textContent = "";
+    hintContainer.innerHTML = "";
+    historyContent.innerHTML = "";
+    revealDiv.classList.add("hidden");
+    revealDiv.textContent = "";
+    timerDisplay.classList.add("hidden");
+    timerDisplay.textContent = "Time Left: 120s";
+    document.getElementById("bestGuess").classList.add("hidden");
+    bestGuessText.textContent = "None";
+    }
 
   </script>
   
